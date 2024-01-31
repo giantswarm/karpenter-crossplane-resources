@@ -1,0 +1,12 @@
+name: karpenter-crossplane-resources
+serviceType: managed
+
+clusterName: ""
+accountID: ""
+baseDomain: ""
+awsPartition: ""
+region: ""
+
+project:
+  branch: "[[ .Branch ]]"
+  commit: "[[ .SHA ]]"

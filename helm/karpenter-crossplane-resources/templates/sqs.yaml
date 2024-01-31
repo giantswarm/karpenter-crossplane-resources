@@ -1,0 +1,62 @@
+apiVersion: sqs.aws.crossplane.io/v1beta1
+kind: Queue
+metadata:
+  name: {{.Values.clusterName}}-karpenter
+  namespace: {{.ReleaseNamespace}}
+  labels:
+      {{- include "labels.common" . | nindent 4 }}
+spec:
+  providerConfigRef:
+    name: {{.Values.clusterName}}
+  forProvider:
+    tags:
+      giantswarm.io/cluster: {{.Values.clusterName}}
+      giantswarm.io/used-for: termination-handler
+      sigs.k8s.io/cluster-api-provider-aws/cluster/{{.Values.clusterName}}: owned
+    messageRetentionPeriod: 300
+---
+apiVersion: cloudwatchevents.aws.upbound.io/v1beta1
+kind: Rule
+metadata:
+  name: {{.Values.clusterName}}-karpenter
+  namespace: {{.ReleaseNamespace}}
+  labels:
+      {{- include "labels.common" . | nindent 4 }}
+spec:
+  providerConfigRef:
+    name: {{.Values.clusterName}}
+  forProvider:
+    tags:
+      giantswarm.io/cluster: {{.Values.clusterName}}
+      sigs.k8s.io/cluster-api-provider-aws/cluster/{{.Values.clusterName}}: owned
+    eventBusNameSelector:
+      matchLabels:
+        giantswarm.io/cluster: {{.Values.clusterName}}
+        giantswarm.io/used-for: termination-handler
+    eventPattern: |
+      {
+        "source": [
+          "aws.health"
+        ],
+        "detail-type": [
+          "AWS Health Event"
+        ]
+      }
+---
+apiVersion: cloudwatchevents.aws.upbound.io/v1beta1
+kind: Target
+metadata:
+  name: {{.Values.clusterName}}-karpenter
+  namespace: {{.ReleaseNamespace}}
+  labels:
+      {{- include "labels.common" . | nindent 4 }}
+spec:
+  providerConfigRef:
+    name: {{.Values.clusterName}}
+  forProvider:
+    arn: arn:{{.Values.awsPartition}}:sqs:{{.Values.region}}:{{.Values.accountId}}:{{.Values.clusterName}}-karpenter
+    eventBusName: default
+    ruleSelector:
+      matchLabels:
+        giantswarm.io/cluster: {{.Values.clusterName}}
+        giantswarm.io/used-for: termination-handler

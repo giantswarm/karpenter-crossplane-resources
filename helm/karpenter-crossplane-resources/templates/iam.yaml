@@ -1,0 +1,80 @@
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: Role
+metadata:
+  name: {{.Values.clusterName}}-karpenter
+  namespace: {{.ReleaseNamespace}}
+  labels:
+      {{- include "labels.common" . | nindent 4 }}
+spec:
+  providerConfigRef:
+    name: {{.Values.clusterName}}
+  forProvider:
+    tags:
+      giantswarm.io/cluster: {{.Values.clusterName}}
+      sigs.k8s.io/cluster-api-provider-aws/cluster/{{.Values.clusterName}}: owned
+    assumeRolePolicy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Federated": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:oidc-provider/irsa.{{.Values.baseDomain}}"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+              "StringLike": {
+                "irsa.{{.Values.baseDomain}}:sub": "system:serviceaccount:*:*karpenter*"
+              }
+            }
+          }
+        ]
+      }
+    inlinePolicy:
+      - name: karpenter-policy
+        policy: |
+          {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Resource": "*",
+                "Action": [
+                  "ec2:CreateFleet",
+                  "ec2:CreateLaunchTemplate",
+                  "ec2:CreateTags",
+                  "ec2:DeleteLaunchTemplate",
+                  "ec2:RunInstances",
+                  "ec2:TerminateInstances",
+                  "ec2:DescribeAvailabilityZones",
+                  "ec2:DescribeImages",
+                  "ec2:DescribeInstances",
+                  "ec2:DescribeInstanceTypeOfferings",
+                  "ec2:DescribeInstanceTypes",
+                  "ec2:DescribeLaunchTemplates",
+                  "ec2:DescribeSecurityGroups",
+                  "ec2:DescribeSpotPriceHistory",
+                  "ec2:DescribeSubnets",
+                  "pricing:GetProducts",
+                  "ssm:GetParameter"
+                ]
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sqs:DeleteMessage",
+                  "sqs:GetQueueAttributes",
+                  "sqs:GetQueueUrl",
+                  "sqs:ReceiveMessage"
+                ],
+                "Resource": "test"
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:PassRole"
+                ]
+                "Resource": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:role/gs-cluster-{{.Values.clusterName}}-role-*"
+              }
+            ]
+          }
