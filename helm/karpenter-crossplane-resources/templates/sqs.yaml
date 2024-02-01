@@ -7,13 +7,14 @@ metadata:
       {{- include "labels.common" . | nindent 4 }}
 spec:
   providerConfigRef:
-    name: {{.Values.clusterName}}
+    name: {{.Values.clusterName}}-karpenter
   forProvider:
     tags:
       giantswarm.io/cluster: {{.Values.clusterName}}
       giantswarm.io/used-for: termination-handler
       sigs.k8s.io/cluster-api-provider-aws/cluster/{{.Values.clusterName}}: owned
     messageRetentionPeriod: 300
+    region: {{.Values.region}}
 ---
 apiVersion: cloudwatchevents.aws.upbound.io/v1beta1
 kind: Rule
