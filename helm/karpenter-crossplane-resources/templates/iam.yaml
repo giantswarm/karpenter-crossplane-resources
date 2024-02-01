@@ -19,12 +19,12 @@ spec:
           {
             "Effect": "Allow",
             "Principal": {
-              "Federated": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:oidc-provider/irsa.{{.Values.baseDomain}}"
+              "Federated": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:oidc-provider/irsa.{{.Values.clusterName}}.{{.Values.baseDomain}}"
             },
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
               "StringLike": {
-                "irsa.{{.Values.baseDomain}}:sub": "system:serviceaccount:*:*karpenter*"
+                "irsa.{{.Values.clusterName}}.{{.Values.baseDomain}}:sub": "system:serviceaccount:*:*karpenter*"
               }
             }
           }
