@@ -3,7 +3,7 @@ appVersion: 0.0.1
 # Please make sure your name DOES NOT end in "app" or "-app".
 name: karpenter-crossplane-resources
 # Please describe what the app provides in a sentence or two.
-description: Crossplane Resources for External DNS
+description: Crossplane Resources for Karpenter
 home: https://github.com/giantswarm/karpenter-crossplane-resources
 # If you have an icon/logo, you should add it to https://github.com/giantswarm/web-assets
 # and set the final URL as a value here and uncomment.
