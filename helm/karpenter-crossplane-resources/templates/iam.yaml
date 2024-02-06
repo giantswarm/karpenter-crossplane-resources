@@ -67,7 +67,7 @@ spec:
                   "sqs:GetQueueUrl",
                   "sqs:ReceiveMessage"
                 ],
-                "Resource": "test"
+                "Resource": "arn:{{.Values.awsPartition}}:sqs:{{.Values.region}}:{{.Values.accountID}}:{{.Values.clusterName}}-karpenter"
               },
               {
                 "Effect": "Allow",
