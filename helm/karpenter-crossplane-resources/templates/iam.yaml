@@ -73,7 +73,7 @@ spec:
                 "Effect": "Allow",
                 "Action": [
                   "iam:PassRole"
-                ]
+                ],
                 "Resource": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:role/gs-cluster-{{.Values.clusterName}}-role-*"
               }
             ]
