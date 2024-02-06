@@ -74,7 +74,7 @@ spec:
                 "Action": [
                   "iam:PassRole"
                 ],
-                "Resource": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:role/gs-cluster-{{.Values.clusterName}}-role-*"
+                "Resource": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:role/nodes-*-{{.Values.clusterName}}"
               }
             ]
           }
