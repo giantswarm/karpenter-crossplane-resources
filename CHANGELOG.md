@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix IRSA URL in the IAM role.
+
 ## [0.0.5] - 2024-02-06
 
 ## [0.0.4] - 2024-02-06
