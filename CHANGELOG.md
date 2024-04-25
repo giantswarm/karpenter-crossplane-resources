@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Use OIDC Domain parameter
+
 ## [0.0.6] - 2024-03-18
 
 ### Fixed

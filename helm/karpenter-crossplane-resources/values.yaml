@@ -6,6 +6,9 @@ accountID: ""
 baseDomain: ""
 awsPartition: ""
 region: ""
+oidcDomain: ""
+awsCluster:
+  vpcId: ""
 
 project:
   branch: "[[ .Branch ]]"
