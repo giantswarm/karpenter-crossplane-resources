@@ -47,10 +47,8 @@ spec:
           }
         ]
       }
-    queueUrlSelector:
-      matchLabels:
-        giantswarm.io/cluster: {{.Values.clusterName}}
-        giantswarm.io/used-for: termination-handler
+    queueUrlRef:
+      name: {{.Values.clusterName}}-karpenter
 ---
 apiVersion: cloudwatchevents.aws.upbound.io/v1beta1
 kind: Rule

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- SQS Selector
+
 ## [0.1.0] - 2024-04-29
 
 ## [0.0.7] - 2024-04-25
