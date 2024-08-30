@@ -28,7 +28,7 @@ spec:
               }
             }
           }
-          {{- if .Values.internal.migration.irsaAdditionalDomain }}
+          {{- if ((.Values.internal).migration).irsaAdditionalDomain }}
           , {
             "Effect": "Allow",
             "Principal": {
@@ -123,7 +123,7 @@ spec:
               }
             }
           }
-          {{- if .Values.internal.migration.irsaAdditionalDomain }}
+          {{- if ((.Values.internal).migration).irsaAdditionalDomain }}
           , {
             "Effect": "Allow",
             "Principal": {
