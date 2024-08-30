@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Add support for vintage OIDC issuer for migrated clusters
+
 ## [0.1.1] - 2024-05-09
 
 ### Fixed

@@ -28,6 +28,20 @@ spec:
               }
             }
           }
+          {{- if .Values.internal.migration.irsaAdditionalDomain }}
+          , {
+            "Effect": "Allow",
+            "Principal": {
+              "Federated": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:oidc-provider/{{.Values.internal.migration.irsaAdditionalDomain}}"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+              "StringLike": {
+                "{{.Values.internal.migration.irsaAdditionalDomain}}:sub": "system:serviceaccount:*:*karpenter*"
+              }
+            }
+          }
+          {{- end }}
         ]
       }
     inlinePolicy:
@@ -109,6 +123,20 @@ spec:
               }
             }
           }
+          {{- if .Values.internal.migration.irsaAdditionalDomain }}
+          , {
+            "Effect": "Allow",
+            "Principal": {
+              "Federated": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:oidc-provider/{{.Values.internal.migration.irsaAdditionalDomain}}"
+            },
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {
+              "StringLike": {
+                "{{.Values.internal.migration.irsaAdditionalDomain}}:sub": "system:serviceaccount:*:*karpenter*"
+              }
+            }
+          }
+          {{- end }}
         ]
       }
     inlinePolicy:
