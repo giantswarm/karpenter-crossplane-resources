@@ -44,6 +44,19 @@
         },
         "serviceType": {
             "type": "string"
+        },
+        "internal": {
+            "type": "object",
+            "properties": {
+                "migration": {
+                    "type": "object",
+                    "properties": {
+                        "irsaAdditionalDomain": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     }
 }
