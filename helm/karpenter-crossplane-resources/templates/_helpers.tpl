@@ -36,3 +36,13 @@ giantswarm.io/service-type: {{ .Values.serviceType }}
 helm.sh/chart: {{ include "chart" . | quote }}
 {{- end -}}
 
+{{/*
+Get list of all provided OIDC domains
+*/}}
+{{- define "oidcDomains" -}}
+{{- $oidcDomains := list .Values.oidcDomain -}}
+{{- if .Values.oidcDomains -}}
+{{- $oidcDomains = concat $oidcDomains .Values.oidcDomains -}}
+{{- end -}}
+{{- uniq (compact $oidcDomains) | toJson -}}
+{{- end -}}

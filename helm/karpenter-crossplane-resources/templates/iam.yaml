@@ -16,28 +16,17 @@ spec:
       {
         "Version": "2012-10-17",
         "Statement": [
-          {
+          {{- $oidcDomains := include "oidcDomains" . | fromJsonArray -}}
+          {{- range $index, $oidcDomain := $oidcDomains -}}
+          {{- if not (eq $index 0) }}, {{ end }}{
             "Effect": "Allow",
             "Principal": {
-              "Federated": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:oidc-provider/{{.Values.oidcDomain}}"
+              "Federated": "arn:{{$.Values.awsPartition}}:iam::{{$.Values.accountID}}:oidc-provider/{{$oidcDomain}}"
             },
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
               "StringLike": {
-                "{{.Values.oidcDomain}}:sub": "system:serviceaccount:*:*karpenter*"
-              }
-            }
-          }
-          {{- if ((.Values.internal).migration).irsaAdditionalDomain }}
-          , {
-            "Effect": "Allow",
-            "Principal": {
-              "Federated": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:oidc-provider/{{.Values.internal.migration.irsaAdditionalDomain}}"
-            },
-            "Action": "sts:AssumeRoleWithWebIdentity",
-            "Condition": {
-              "StringLike": {
-                "{{.Values.internal.migration.irsaAdditionalDomain}}:sub": "system:serviceaccount:*:*karpenter*"
+                "{{$oidcDomain}}:sub": "system:serviceaccount:*:*karpenter*"
               }
             }
           }
@@ -111,28 +100,17 @@ spec:
       {
         "Version": "2012-10-17",
         "Statement": [
-          {
+          {{- $oidcDomains := include "oidcDomains" . | fromJsonArray -}}
+          {{- range $index, $oidcDomain := $oidcDomains -}}
+          {{- if not (eq $index 0) }}, {{ end }}{
             "Effect": "Allow",
             "Principal": {
-              "Federated": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:oidc-provider/{{.Values.oidcDomain}}"
+              "Federated": "arn:{{$.Values.awsPartition}}:iam::{{$.Values.accountID}}:oidc-provider/{{$oidcDomain}}"
             },
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
               "StringLike": {
-                "{{.Values.oidcDomain}}:sub": "system:serviceaccount:*:*karpenter*"
-              }
-            }
-          }
-          {{- if ((.Values.internal).migration).irsaAdditionalDomain }}
-          , {
-            "Effect": "Allow",
-            "Principal": {
-              "Federated": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:oidc-provider/{{.Values.internal.migration.irsaAdditionalDomain}}"
-            },
-            "Action": "sts:AssumeRoleWithWebIdentity",
-            "Condition": {
-              "StringLike": {
-                "{{.Values.internal.migration.irsaAdditionalDomain}}:sub": "system:serviceaccount:*:*karpenter*"
+                "{{$oidcDomain}}:sub": "system:serviceaccount:*:*karpenter*"
               }
             }
           }

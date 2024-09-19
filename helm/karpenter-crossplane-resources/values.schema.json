@@ -28,6 +28,12 @@
         "oidcDomain": {
             "type": "string"
         },
+        "oidcDomains": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
         "project": {
             "type": "object",
             "properties": {
@@ -44,19 +50,6 @@
         },
         "serviceType": {
             "type": "string"
-        },
-        "internal": {
-            "type": "object",
-            "properties": {
-                "migration": {
-                    "type": "object",
-                    "properties": {
-                        "irsaAdditionalDomain": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
         }
     }
 }
