@@ -44,5 +44,5 @@ Get list of all provided OIDC domains
 {{- if .Values.oidcDomains -}}
 {{- $oidcDomains = concat $oidcDomains .Values.oidcDomains -}}
 {{- end -}}
-{{- uniq (compact $oidcDomains) | toJson -}}
+{{- compact $oidcDomains | uniq | toJson -}}
 {{- end -}}
