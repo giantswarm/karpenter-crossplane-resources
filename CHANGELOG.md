@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Make use of the new `oidcDomains` value in the crossplane info ConfigMap, remove use of internal value
+
 ## [0.1.2] - 2024-09-05
 
 ### Changed

@@ -7,13 +7,10 @@ baseDomain: ""
 awsPartition: ""
 region: ""
 oidcDomain: ""
+oidcDomains: []
 awsCluster:
   vpcId: ""
 
 project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
-
-# internal:
-#   migration:
-#     irsaAdditionalDomain: ""
