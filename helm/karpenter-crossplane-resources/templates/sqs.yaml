@@ -57,7 +57,6 @@ metadata:
   namespace: {{.ReleaseNamespace}}
   labels:
     {{- include "labels.common" . | nindent 4 }}
-    giantswarm.io/cluster: {{.Values.clusterName}}
     giantswarm.io/used-for: karpenter-health
 spec:
   providerConfigRef:
@@ -85,7 +84,6 @@ metadata:
   namespace: {{.ReleaseNamespace}}
   labels:
     {{- include "labels.common" . | nindent 4 }}
-    giantswarm.io/cluster: {{.Values.clusterName}}
     giantswarm.io/used-for: karpenter-spotinterruption
 spec:
   providerConfigRef:
@@ -113,7 +111,6 @@ metadata:
   namespace: {{.ReleaseNamespace}}
   labels:
     {{- include "labels.common" . | nindent 4 }}
-    giantswarm.io/cluster: {{.Values.clusterName}}
     giantswarm.io/used-for: karpenter-rebalance
 spec:
   providerConfigRef:
@@ -141,7 +138,6 @@ metadata:
   namespace: {{.ReleaseNamespace}}
   labels:
     {{- include "labels.common" . | nindent 4 }}
-    giantswarm.io/cluster: {{.Values.clusterName}}
     giantswarm.io/used-for: karpenter-statechange
 spec:
   providerConfigRef:
