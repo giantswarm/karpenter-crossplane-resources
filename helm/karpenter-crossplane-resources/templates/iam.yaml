@@ -11,6 +11,7 @@ spec:
   forProvider:
     tags:
       giantswarm.io/cluster: {{.Values.clusterName}}
+      giantswarm.io/managed-by: {{ .Release.Name | quote }}
       sigs.k8s.io/cluster-api-provider-aws/cluster/{{.Values.clusterName}}: owned
     assumeRolePolicy: |
       {
@@ -95,6 +96,7 @@ spec:
   forProvider:
     tags:
       giantswarm.io/cluster: {{.Values.clusterName}}
+      giantswarm.io/managed-by: {{ .Release.Name | quote }}
       sigs.k8s.io/cluster-api-provider-aws/cluster/{{.Values.clusterName}}: owned
     assumeRolePolicy: |
       {
