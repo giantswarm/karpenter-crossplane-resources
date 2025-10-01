@@ -59,7 +59,8 @@ spec:
                   "ec2:DescribeSpotPriceHistory",
                   "ec2:DescribeSubnets",
                   "pricing:GetProducts",
-                  "ssm:GetParameter"
+                  "ssm:GetParameter",
+                  "iam:ListInstanceProfiles"
                 ]
               },
               {
