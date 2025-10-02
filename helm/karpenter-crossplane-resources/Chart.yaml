@@ -10,6 +10,6 @@ home: https://github.com/giantswarm/karpenter-crossplane-resources
 icon: https://s.giantswarm.io/app-icons/karpenter/1/light.svg
 sources:
   - https://github.com/giantswarm/karpenter-crossplane-resources
-version: 0.3.0
+version: 0.4.0
 annotations:
   application.giantswarm.io/team: phoenix

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2025-10-02
+
 ### Changed
 
 - Add `iam:ListInstanceProfiles` for release 1.7.1
@@ -79,7 +81,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.1] - 2024-02-02
 
-[Unreleased]: https://github.com/giantswarm/karpenter-crossplane-resources/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/giantswarm/karpenter-crossplane-resources/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/giantswarm/karpenter-crossplane-resources/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/giantswarm/karpenter-crossplane-resources/compare/v0.2.1...v0.3.0
 [0.2.1]: https://github.com/giantswarm/karpenter-crossplane-resources/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/giantswarm/karpenter-crossplane-resources/compare/v0.1.4...v0.2.0
