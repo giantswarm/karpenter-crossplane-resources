@@ -7,11 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Add `iam:ListInstanceProfiles` for release 1.7.1
+
+
 ## [0.3.0] - 2025-10-02
 
 ### Added
 
 - Add `giantswarm.io/managed-by` tag to AWS Resources.
+
 
 ## [0.2.1] - 2025-09-11
 
