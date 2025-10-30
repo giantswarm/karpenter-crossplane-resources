@@ -79,7 +79,7 @@ spec:
                 "Action": [
                   "iam:PassRole"
                 ],
-                "Resource": "arn:{{.Values.awsPartition}}:iam::{{.Values.accountID}}:role/nodes-*-{{.Values.clusterName}}"
+                "Resource": "{{ .Values.workersIamRole }}"
               }
             ]
           }

@@ -50,6 +50,10 @@
         },
         "serviceType": {
             "type": "string"
+        },
+        "workersIamRole": {
+            "type": "string",
+            "description": "IAM role used for the worker nodes. It will be used to limit the 'iam:PassRole' permission in the karpenter role policy to target only that role."
         }
     }
 }
