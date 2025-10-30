@@ -14,3 +14,5 @@ awsCluster:
 project:
   branch: "[[ .Branch ]]"
   commit: "[[ .SHA ]]"
+
+workersIamRole: ""
