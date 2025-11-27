@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Default the `iam:PassRole` resource to old worker role ARN (the one used before crossplane started managing the IAM Roles) when `workersIamRole` is not provided. This is needed to make our tests automation to work, regardless of the version of this app used.
+
 ## [0.5.0] - 2025-10-30
 
 ### Added
