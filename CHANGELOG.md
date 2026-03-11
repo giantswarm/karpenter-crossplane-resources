@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Add `io.giantswarm.application.audience: all` annotation to publish the app to the customer Backstage catalog.
+- Migrate chart metadata annotations to `io.giantswarm.application.*` format.
+
 ## [0.5.1] - 2025-11-27
 
 ### Fixed
@@ -18,8 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add new Helm value to configure the workers IAM role. When Karpenter launches worker instances, it will attach the worker instance profile.
-  To do that, AWS requires that the calling role (Karpenter’s role) have the `iam:PassRole` permission for the worker role being attached.
-  This prevents privilege escalation as you can’t make EC2s with arbitrary roles unless you’re explicitly allowed to pass them.
+  To do that, AWS requires that the calling role (Karpenter's role) have the `iam:PassRole` permission for the worker role being attached.
+  This prevents privilege escalation as you can't make EC2s with arbitrary roles unless you're explicitly allowed to pass them.
 
 ## [0.4.0] - 2025-10-02
 
