@@ -12,7 +12,6 @@ sources:
   - https://github.com/giantswarm/karpenter-crossplane-resources
 version: 0.5.1
 annotations:
-  application.giantswarm.io/team: phoenix
   io.giantswarm.application.audience: all
   io.giantswarm.application.managed: "true"
   io.giantswarm.application.team: phoenix
